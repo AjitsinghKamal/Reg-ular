@@ -215,5 +215,9 @@ div#text-input:focus{
     top:86px;
 }
 
+  [contentEditable=true]:empty:not(:focus):before{
+        content:attr(data-ph)
+    }
+
 
 
