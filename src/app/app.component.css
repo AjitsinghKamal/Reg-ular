@@ -215,8 +215,11 @@ div#text-input:focus{
     top:86px;
 }
 
+<<<<<<< 9745ebc31fc85053e5f82ef2fef8646c9023cf0f
 [contentEditable=true]:empty:not(:focus):before{
     content:attr(data-ph);
 }
+=======
+>>>>>>> do page
 
 

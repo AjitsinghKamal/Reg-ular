@@ -71,7 +71,8 @@ pattern:any=()=>{
             return pattern;
                         
         }catch(error){
-            this.result="no result yet";
+
+            this.result=[];
             this.counter=0;
             
         }       
