@@ -22,7 +22,7 @@
         
     </header> 
 <!--- Input test string here -->     
-        <div id="text-input" class="switchers" contenteditable="true" spellcheck="false" [inputText]="highlight" (update)="onChange($event)"></div> 
+        <div id="text-input" class="switchers" contenteditable="true" data-ph="Enter text here " spellcheck="false" [inputText]="highlight" (update)="onChange($event)"></div> 
         <div class="switchers" id="substitute" *ngIf="replace">
             {{text}}
         </div> 
