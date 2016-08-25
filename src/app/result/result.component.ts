@@ -14,7 +14,5 @@ export class ResultComponent {
     @Input() count:any;
 
    
-
-   
  
 }
