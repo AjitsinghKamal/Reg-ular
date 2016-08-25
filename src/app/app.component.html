@@ -1,3 +1,38 @@
-<h1>
-  {{title}}
-</h1>
+<div id="app-body">
+    
+    <header id="title" class="card">
+        <span>reg-Ular</span> reg-ex with Angular2<div id="git"><span></span><a href="https://github.com/AjitsinghKamal"><img src="././github.png"></a></div>
+    </header>
+
+   <div id="main-container">
+       <div id="regex-box" >
+<!--- Take regex input -->
+<!---  seperate property and event binding of ngModel for live regex check-->
+           <label for="reg-input" class="l-one">/</label><input type="text" placeholder="regex here.." id="reg-input" [ngModel]="regex" (ngModelChange)="onChange($event)" class="l-one"><label for="reg-input" class="l-one">/<span>g </span><span>m </span></label>
+        </div><!--regex-box close-->
+       
+   <div id="text-box" class="panel" myHighlight>
+       
+    <header id="t-header"> 
+    
+        <button id="tab-1" (click)="toggle(false)" class="t-content">matches</button>
+        <button id="tab-2" (click)="toggle(true)" class="t-content">replace with</button>
+<!-- Substite text input here -->
+       <input id="sub-input" class="l-one t-content" *ngIf="replace"   [ngModel]="replaceWith"(ngModelChange)="substitute($event)">
+        
+    </header> 
+<!--- Input test string here -->     
+        <div id="text-input" class="switchers" contenteditable="true" spellcheck="false" [inputText]="highlight" (update)="onChange($event)"></div> 
+        <div class="switchers" id="substitute" *ngIf="replace">
+            {{text}}
+        </div> 
+   </div> <!---div#text-box close-->
+      
+       <div id="out-box" class="panel">
+           <match-detail [matchLog]="result" [count]="counter"></match-detail>
+     </div>
+       
+       
+            
+    </div><!---main-container close-->
+</div>
