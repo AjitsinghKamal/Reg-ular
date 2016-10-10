@@ -11,6 +11,8 @@ import { Directive ,
         EventEmitter ,
         Input } from '@angular/core';
 
+declare var Mark:any;
+
 @Directive({ 
     selector:'[inputText]',
         
@@ -20,25 +22,37 @@ export class EditorDirective implements OnChanges {
 //notify property change to parent
     @Output() update=new EventEmitter();
 //bind target of 'highlight' property of parent
-    @Input('inputText') highlight:any;
+    @Input('inputText') text:any;
+    @Input() lights:any;
     
 private el:HTMLElement;
     
-textArea:any="";
+ textArea:any="";
+ markInstance:any;
 
 constructor(elRef:ElementRef) {
     this.el = elRef.nativeElement;
+    this.markInstance=new Mark(this.el);
 }
 //highlight regex matches whenever expression changes    
 ngOnChanges(changes:{[propName:string]:SimpleChange}){
-    this.el.innerHTML=changes['highlight'].currentValue;
+    this.el.innerText=changes['text'].currentValue;
+    this.textArea=this.el.innerHTML;
     
 }
 
+highlight(reg){
+    this.markInstance.unmark();
+    this.markInstance.markRegExp(reg);
+}
+
+
+//TODO sanitise contenteditable input
 //this updates input text
 //on each blur
+/*
 @HostListener('blur') onBlur(){
-    var newText=this.el.innerText;
+    var newText=this.el.innerHTML;
     this.sendMessage(newText);
 }
 
@@ -51,5 +65,6 @@ sendMessage(value){
     
     }
 }
+*/
 //close class    
 }

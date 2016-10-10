@@ -12,6 +12,8 @@ import {EditorDirective} from "./editor.directive";
 //child component to display result summary
 import {ResultComponent} from "./result/result.component";
 
+
+
 @Component({
   moduleId: module.id,
  
@@ -27,7 +29,7 @@ import {ResultComponent} from "./result/result.component";
 export class AppComponent{
     //get child directive's property
     //use 'editor' to reference it
-    @ViewChild(EditorDirective) editor:EditorDirective;                       
+    textArea:any="";                       
     //get regular-expression
     regex:string="";  
     //get expression to replace with
@@ -35,7 +37,7 @@ export class AppComponent{
     //to maintain two instances
     //of input string
     //for matching and substituting
-    text:string="";
+    
     //property to trigger ngIf in template
     replace:boolean=false;               
     //displays result
@@ -48,14 +50,21 @@ export class AppComponent{
     //to highlight
     highlight:any="";
 
+
+
+ @ViewChild(EditorDirective)
+  private editor: EditorDirective;
 //event binding function to element 'reg-input' & 'text-input'
 onChange(newVal:any){
-    if(newVal!=true)
+    
             this.regex=newVal;
-    else
-        this.text=this.editor.textArea;
+    
     this.matchThis();
    
+}
+onChangeText(newVal:any){
+    this.textArea=newVal;
+    this.matchThis();
 }
 //whether to show or hide ngIf alternatives    
 toggle(toShow){
@@ -65,10 +74,15 @@ toggle(toShow){
 //checks and validate input regular exp
 pattern:any=()=>{
     
-     let pattern;
+     let pat;
         try{
-            pattern=new RegExp(this.regex,'gm');
-            return pattern;
+            if(!this.regex || this.regex===""){
+                return undefined;
+            }
+            else{
+                pat=new RegExp(this.regex,'gm');
+                return pat;
+            }
                         
         }catch(error){
 
@@ -86,7 +100,7 @@ if(m!=undefined){
 //multi-d array
     let arr=[];
 //execute exec over entire input text
-    while((match=m.exec(this.editor.textArea))!==null){
+    while((match=m.exec(this.textArea))!==null){
 //helper array to feed more senible data to arr[]
         let subDetail=[];
         let start=m.lastIndex-match[0].length;
@@ -111,10 +125,8 @@ if(m!=undefined){
             this.result=arr;
             this.counter=arr.length;
 //highlight match across input
-        this.highlight=this.editor.textArea.replace(m,match=>{
-            return "<span style='background-color:#f19c79'>"+match+"</span>";
-
-        });
+        this.editor.highlight(m);
+        
         
     }
   }
@@ -125,7 +137,7 @@ if(m!=undefined){
 substitute(val){
     
     let p=this.pattern();
-    this.text=this.editor.textArea.replace(p,val);
+    this.highlight=this.highlight.replace(p,val);
     
 }
     

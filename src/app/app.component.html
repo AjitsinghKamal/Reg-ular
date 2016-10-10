@@ -11,25 +11,31 @@
            <label for="reg-input" class="l-one">/</label><input type="text" placeholder="regex here.." id="reg-input" [ngModel]="regex" (ngModelChange)="onChange($event)" class="l-one"><label for="reg-input" class="l-one">/<span>g </span><span>m </span></label>
         </div><!--regex-box close-->
        
-   <div id="text-box" class="panel" myHighlight>
+   <div id="text-box" class="panel" >
        
     <header id="t-header"> 
-    
+    <!--dropped these
         <button id="tab-1" (click)="toggle(false)" class="t-content">matches</button>
         <button id="tab-2" (click)="toggle(true)" class="t-content">replace with</button>
-<!-- Substite text input here -->
-       <input id="sub-input" class="l-one t-content" *ngIf="replace"   [ngModel]="replaceWith"(ngModelChange)="substitute($event)">
-        
+        -->
+<!-- Substite text input here >
+       <input id="sub-input" class="l-one t-content" *ngIf="replace"   [ngModel]="replaceWith"
+       (ngModelChange)="substitute($event)"-->
+        Test String
     </header> 
 <!--- Input test string here -->     
 
 
-        <div id="text-input" class="switchers" contenteditable="true" spellcheck="false" [inputText]="highlight" (update)="onChange($event)" data-ph="Enter text here"></div> 
+        <div id="text-input" class="switchers" data-ph="Enter text here">
+          
+          <div id="highlt--input" class="stacked" [inputText]="textArea"></div>
+          <textarea id="user--input" class="stacked" spellcheck="none" [ngModel]="replaceWith"
+       (ngModelChange)="onChangeText($event)">welcome...input test string here</textarea>
 
-
-        <div class="switchers" id="substitute" *ngIf="replace">
-            {{text}}
         </div> 
+
+
+        
    </div> <!---div#text-box close-->
       
        <div id="out-box" class="panel">
