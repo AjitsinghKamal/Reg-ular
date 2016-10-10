@@ -133,7 +133,7 @@ header>span{
 }
 
 #text-box{
-    width:60%;
+    width:50%;
     height:80%;
     position:relative;
     margin-right: 2%;
@@ -145,7 +145,7 @@ header>span{
 
 #out-box{
      position:relative;
-     width:32%;
+     width:40%;
     height:80%;
     margin-left:2%;
     border-color:#009b72;
@@ -196,15 +196,55 @@ input.t-content {
 }
 
 div#text-input{
-    line-height: 2em;
+    
      color: #686567;
      top:86px;
      bottom:0px;
-    background-color: #F7F9F9;
+    
 }
 
 div#text-input:focus{
     outline: 0px solid transparent;
+}
+
+textarea{
+    position:absolute;
+    height:90%;
+    width:95%;
+    
+    top:3px;
+    left:5px;
+    
+    resize:none;
+   
+    background-color: transparent;
+   
+    border:none;
+}
+
+textarea:focus{
+outline:none;
+}
+
+div#highlt--input{
+    position:absolute;
+     height:90%;
+    width:95%;
+    
+    top:3px;
+    left:5px;
+   
+    padding:2px;
+    
+}
+
+.stacked{
+   
+    overflow: auto;
+    font-family: monospace;
+    font-size: 2em;
+    
+    
 }
 
 #substitute{
@@ -214,6 +254,8 @@ div#text-input:focus{
     background-color:#F7F9F9;
     top:86px;
 }
+
+
 
 
 
