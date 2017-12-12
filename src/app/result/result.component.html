@@ -1,0 +1,26 @@
+<!---template for match-detail-component -->
+
+<header class="panel-header">
+    <h5 class="r-header">Matches Found</h5>
+    <div id="count" class="r-header">{{count}} match</div>
+</header>
+
+<div id="result-container">
+    
+    <div id="results" >
+        
+        <ul >
+        <li class="result_item" *ngFor="let match of matchLog">
+            <div>
+                <h4 class="match"><span># </span>{{match[0]}}</h4>
+                <h5 class="match_cat pad--left">length :</h5><span class="pad--left">{{match[1]}}</span>
+                <h5 class="match_cat pad--left">position :</h5>
+                   <span class="pad--left"> starts: {{match[2]}}</span>
+                   <span class="pad--left"> ends: {{match[3]}}</span>
+            </div>    
+        </li>
+        </ul>
+    
+    </div>
+    
+</div>
